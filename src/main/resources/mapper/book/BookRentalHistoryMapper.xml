@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookManagementSystem.domain.book.mapper.BookRentalHistoryMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+    <!-- 책 대출 -->
+    <insert id="checkOut" parameterType="com.bookManagementSystem.domain.book.dto.request.BookRentalHistoryRequestDto">
+        INSERT INTO book_rental_history(book_id, user_id, return_book, rental_date, return_date)
+        VALUES(#{book_id}, #{user_id}, #{return_book}, #{rental_date}, #{return_date})
+    </insert>
+    <!-- 대출이력 -->
+    <select id="findBookRental"
+            parameterType="com.bookManagementSystem.domain.book.dto.request.BookRentalHistoryRequestDto">
+        SELECT book_rental.book_id, book_rental.user_id, user.name, user.email, user.address, user.address_detail,
+        user.phone_number,
+        book.title, book.author, book_rental.return_book , book_rental.rental_date, book_rental.return_date
+        FROM book_rental_history AS book_rental
+        INNER JOIN book
+        ON book_rental.book_id = book.id
+        INNER JOIN user
+        ON book_rental.user_id = user.id
+        WHERE user.name LIKE CONCAT('%',#{name},'%') and book.title LIKE CONCAT('%',#{title},'%')
+        AND book_rental.return_book = false
+    </select>
+    <!-- 책 반납-->
+    <update id="returnBook" parameterType="com.bookManagementSystem.domain.book.dto.request.BookRequestDto">
+        UPDATE book_rental_history
+        SET return_book = true
+        WHERE book_id = #{book_id} AND user_id = #{user_id}
+    </update>
+</mapper>
