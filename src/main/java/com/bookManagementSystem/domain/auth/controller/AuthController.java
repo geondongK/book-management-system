@@ -21,6 +21,12 @@ public class AuthController {
     private final AuthService authService;
     private final ResponseService responseService; // 응답 Response
 
+    /* Test */
+    @GetMapping("/test")
+    public String docker() {
+        return "hello docker";
+    }
+
     /* 회원가입 */
     @PostMapping("/signup")
     public CommonResponse signUp(@RequestBody @Valid SignUpRequestDto dto) {
