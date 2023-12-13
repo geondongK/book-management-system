@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookManagementSystem.domain.auth.mapper.SignInMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
+    <!-- 이메일 중복 체크  -->
+    <select id="findByEmail" parameterType="com.bookManagementSystem.domain.auth.dto.request.SignInRequestDto">
+        SELECT *
+        FROM user
+        WHERE email = #{email}
+    </select>
+    <!-- Spring boot security CustomUserDetailsService 인증 처리  -->
+    <select id="findById" parameterType="com.bookManagementSystem.domain.auth.dto.request.SignInRequestDto">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
+    </select>
+</mapper>

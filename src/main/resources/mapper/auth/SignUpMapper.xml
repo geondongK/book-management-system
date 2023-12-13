@@ -3,14 +3,15 @@
 <mapper namespace="com.bookManagementSystem.domain.auth.mapper.SignUpMapper">    <!-- mapper 인터페이스가 위치하는 경로 -->
     <!-- 회원가입    -->
     <insert id="signUp" parameterType="com.bookManagementSystem.domain.auth.dto.request.SignUpRequestDto">
-        INSERT INTO users(email, name, password, address, address_detail, phone_number)
-        VALUES(#{email}, #{name}, #{password}, #{address}, #{address_detail}, #{phone_number})
+        INSERT INTO user(email, name, password, address, address_detail, phone_number, role, create_date, update_date)
+        VALUES(#{email}, #{name}, #{password}, #{address}, #{address_detail}, #{phone_number}, #{role}, #{create_date},
+        #{update_date})
     </insert>
     <!-- 이메일 중복 체크  -->
     <select id="existsByEmail" parameterType="com.bookManagementSystem.domain.auth.dto.request.SignUpRequestDto"
             resultType="boolean">
         SELECT COUNT(*)
-        FROM users
+        FROM user
         WHERE email = #{email}
     </select>
     <!-- 이름 중복 체크  -->
@@ -24,7 +25,7 @@
     <select id="existsByPhoneNumber" parameterType="com.bookManagementSystem.domain.auth.dto.request.SignUpRequestDto"
             resultType="boolean">
         SELECT COUNT(*)
-        FROM users
+        FROM user
         WHERE phone_number = #{phone_number}
     </select>
 </mapper>

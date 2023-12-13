@@ -1,13 +1,13 @@
 package com.bookManagementSystem.domain.auth.service;
 
-import com.bookManagementSystem.domain.auth.domain.Users;
+import com.bookManagementSystem.domain.auth.dto.request.SignInRequestDto;
 import com.bookManagementSystem.domain.auth.dto.request.SignUpRequestDto;
-
-import java.util.List;
+import com.bookManagementSystem.domain.auth.dto.response.SignInResponseDto;
 
 public interface AuthService {
     /* 회원가입 */
     void signUp(SignUpRequestDto dto);
 
-    void singIn();
+    /* 로그인 */
+    SignInResponseDto singIn(SignInRequestDto dto);
 }
