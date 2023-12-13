@@ -47,7 +47,7 @@ public class SecurityConfig {
                         //.requestMatchers(HttpMethod.POST, "/api/v1/book").hasRole("ADMIN")
                         //.requestMatchers(HttpMethod.PUT, "/api/v1/book").hasRole("ADMIN")
                         //.requestMatchers(HttpMethod.DELETE, "/api/v1/book").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/book/**", "/api/v1/book/**/**").hasRole("USER")
+                        .requestMatchers("/api/v1/book/**", "/api/v1/book/return-book/**", "/api/v1/book/check-out/**").hasRole("USER")
                         // 처리 못한 경로는 로그인한 사용자만 접근가능
                         .anyRequest().authenticated()
                 )
