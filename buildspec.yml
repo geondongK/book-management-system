@@ -31,4 +31,4 @@ phases:
 artifacts:
   files:
     imagedefinitions.json
-    target/build/libs/*.jar app.jar
+    target/book-management-system.jar
