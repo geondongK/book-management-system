@@ -24,11 +24,11 @@ repositories {
 /*
 Docker 오류 : no main manifest attribute
 */
-bootJar {
+//bootJar {
 //    archivesBaseName = '프로젝트이름'
-    archiveFileName = 'book-management-system-service'
-    archiveVersion = "0.0.1"
-}
+//    archiveFileName = 'book-management-system-service'
+//    archiveVersion = "0.0.1"
+//}
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
