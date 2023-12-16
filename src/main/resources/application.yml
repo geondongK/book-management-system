@@ -1,0 +1,29 @@
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+
+spring:
+  datasource:
+    url: ${{ secrets.DB_URL }}
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${{ secrets.NAME }}
+    password: ${{ secrets.PWD }}
+
+  devtools:
+    restart:
+      log-condition-evaluation-delta=false:
+
+  #  properties:
+  #    hibernate:
+  #    format_sql: true
+  #    show_sql: true
+
+  logging:
+    level:
+      root: debug
+      sql: error
+      jdbc: offb
+      jdbc.sqlonly: debug
+
+  jwt:
+    secret-key: cde03ce067884b57bc6cc84e41a99d437edc33b4ee9640d6d4267cee5687b987
+    access-token-exp: 604800000
