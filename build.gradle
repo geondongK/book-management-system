@@ -26,7 +26,7 @@ Docker 오류 : no main manifest attribute
 */
 bootJar {
 //    archivesBaseName = '프로젝트이름'
-    archiveFileName = 'book-management-system-service.jar'
+    archiveFileName = 'book-management-system-service'
     archiveVersion = "0.0.1"
 }
 dependencies {
