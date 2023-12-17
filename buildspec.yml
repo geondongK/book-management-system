@@ -7,10 +7,8 @@ phases:
       - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 902991134853.dkr.ecr.ap-northeast-2.amazonaws.com
       - REPOSITORY_URI=902991134853.dkr.ecr.ap-northeast-2.amazonaws.com/book-management-system-ecr
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-      - echo image_tag_name=${COMMIT_HASH:=latest}
-      - echo image_tag_name=$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-  #      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  #      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
@@ -23,9 +21,8 @@ phases:
       commands:
         - echo Build completed on `date`
         - echo Pushing the Docker image...
-        #- docker push $REPOSITORY_URI:latest
-        #- docker push $REPOSITORY_URI:$IMAGE_TAG
-        - docker push 902991134853.dkr.ecr.ap-northeast-2.amazonaws.com/book-management-system-ecr:latest
+        - docker push $REPOSITORY_URI:latest
+        - docker push $REPOSITORY_URI:$IMAGE_TAG
         - printf '[{"name":"release-me-api","imageUri":"'$REPOSITORY_URI:$IMAGE_TAG'"}]' > imagedefinitions.json
         - cat imagedefinitions.json
 artifacts:
