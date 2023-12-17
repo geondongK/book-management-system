@@ -24,7 +24,7 @@ public class AuthController {
     /* Test */
     @GetMapping("/test")
     public String docker() {
-        return "hello docker";
+        return "hello docker!!";
     }
 
     /* 회원가입 */
