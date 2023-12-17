@@ -20,10 +20,9 @@ phases:
       commands:
         - echo Build completed on `date`
         - echo Pushing the Docker image...
-        - DOCKER_CONTAINER_NAME=book-management-system-ecr
-        - echo '[{"name":"release-me-api","imageUri":"'$REPOSITORY_URI:$IMAGE_TAG'"}]' > imagedefinitions.json
-        - docker push $REPOSITORY_URI:latest
-        - docker push $REPOSITORY_URI:$IMAGE_TAG
+          #         - docker push $REPOSITORY_URI:latest
+          - docker push $REPOSITORY_URI:$IMAGE_TAG
+        - - echo '[{"name":"release-me-api","imageUri":"'$REPOSITORY_URI:$IMAGE_TAG'"}]' > imagedefinitions.json
 artifacts:
   files:
     - imagedefinitions.json
