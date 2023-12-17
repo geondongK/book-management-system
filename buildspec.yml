@@ -26,6 +26,7 @@ phases:
         - docker push $REPOSITORY_URI:latest
         - docker push $REPOSITORY_URI:$IMAGE_TAG
         - printf '[{"name":"release-me-api","imageUri":"'$REPOSITORY_URI:$IMAGE_TAG'"}]' > imagedefinitions.json
+        - cat imagedefinitions.json
 artifacts:
   files:
-    - imagedefinitions.
+    - imagedefinitions.json
