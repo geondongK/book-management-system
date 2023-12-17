@@ -25,6 +25,7 @@ phases:
         - echo Pushing the Docker image...
         #- docker push $REPOSITORY_URI:latest
         #- docker push $REPOSITORY_URI:$IMAGE_TAG
+        - docker push 902991134853.dkr.ecr.ap-northeast-2.amazonaws.com/book-management-system-ecr:latest
         - printf '[{"name":"release-me-api","imageUri":"'$REPOSITORY_URI:$IMAGE_TAG'"}]' > imagedefinitions.json
         - cat imagedefinitions.json
 artifacts:
