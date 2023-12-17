@@ -9,6 +9,7 @@ phases:
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
       - echo image_tag_name=${COMMIT_HASH:=latest}
+      - echo image_tag_name=$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   #      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
